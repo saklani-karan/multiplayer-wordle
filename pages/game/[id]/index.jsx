@@ -36,22 +36,22 @@ export default function Game() {
     const RoundWinnerDialog = ({ winnerUser, correctWord }) => {
         if (winnerUser?.id == gameUser?.id) {
             return (
-                <div className="flex flex-col bg-secondary p-10 rounded-lg space-y-4 justify-center items-center">
+                <div className="flex flex-col bg-white p-10 rounded-lg space-y-4 justify-center items-center w-11/12">
                     <img src="/poppers-gif.gif" className="w-20 h-20" />
 
                     <div className="flex flex-col space-y-1">
-                        <p className="text-center font-bold text-xl">
+                        <p className="text-center font-light text-xl font-raleway text-black">
                             Congratulations
                         </p>
-                        <p className="text-center font-semibold text-base">
+                        <p className="text-center font-light text-base font-raleway text-black">
                             You've won the round
                         </p>
                     </div>
                     <div className="flex flex-col space-y-1">
-                        <p className="text-center text-base  font-light">
+                        <p className="text-center text-base  font-light font-raleway text-black">
                             The correct word is:
                         </p>
-                        <p className="text-center text-lg font-bold">
+                        <p className="text-center text-lg font-bold font-raleway text-green-500">
                             {correctWord?.toUpperCase()}
                         </p>
                     </div>
@@ -59,23 +59,23 @@ export default function Game() {
             );
         }
         return (
-            <div className="flex flex-col bg-secondary p-10 rounded-lg space-y-4 justify-center items-center">
+            <div className="flex flex-col bg-white w-11/12 p-10 rounded-lg space-y-4 justify-center items-center">
                 <div className="flex flex-col space-y-1 justify-center items-center">
-                    <span className="w-10 h-10">
+                    <span className="w-10 h-10 text-red-400">
                         <Dice />
                     </span>
-                    <p className="text-center font-bold text-xl">
+                    <p className="text-center font-light text-xl font-raleway text-black">
                         Better luck next time
                     </p>
-                    <p className="text-center font-semibold text-base">
+                    <p className="text-center font-light text-base font-raleway text-black">
                         {winnerUser?.user?.name} has won the round
                     </p>
                 </div>
                 <div className="flex flex-col space-y-1">
-                    <p className="text-center text-base  font-light">
+                    <p className="text-center text-base  font-light font-raleway text-black">
                         The correct word is:
                     </p>
-                    <p className="text-center text-lg font-bold">
+                    <p className="text-center text-lg font-bold font-raleway text-green-500">
                         {correctWord?.toUpperCase()}
                     </p>
                 </div>
@@ -86,22 +86,22 @@ export default function Game() {
     const GameWinnerDialog = ({ gameWinner, correctWord }) => {
         if (gameWinner?.id == gameUser?.user?.id) {
             return (
-                <div className="flex flex-col bg-secondary p-10 rounded-lg space-y-4 justify-center items-center">
+                <div className="flex flex-col bg-white p-10 rounded-lg space-y-4 justify-center items-center">
                     <img src="/poppers-gif.gif" className="w-20 h-20" />
 
                     <div className="flex flex-col space-y-1">
-                        <p className="text-center font-bold text-xl">
-                            Congratulations
+                        <p className="text-center font-light font-raleway text-black text-xl">
+                            Congratulations!
                         </p>
-                        <p className="text-center font-semibold text-base">
-                            You've won the game!!
+                        <p className="text-center text-black text-base font-light font-raleway">
+                            You've won the game!
                         </p>
                     </div>
                     <div className="flex flex-col space-y-1">
-                        <p className="text-center text-base  font-light">
-                            The correct word for the last round is:
+                        <p className="text-center text-base font-light text-black font-raleway">
+                            The correct word for the last round was:
                         </p>
-                        <p className="text-center text-lg font-bold">
+                        <p className="text-center text-lg font-bold font-raleway text-green-500">
                             {correctWord?.toUpperCase()}
                         </p>
                     </div>
@@ -109,23 +109,23 @@ export default function Game() {
             );
         }
         return (
-            <div className="flex flex-col bg-secondary p-10 rounded-lg space-y-4 justify-center items-center">
+            <div className="flex flex-col bg-white p-10 rounded-lg space-y-4 justify-center items-center">
                 <div className="flex flex-col space-y-1 justify-center items-center">
-                    <span className="w-10 h-10">
+                    <span className="w-10 h-10 text-red-500">
                         <Dice />
                     </span>
-                    <p className="text-center font-bold text-xl">
+                    <p className="text-center font-light font-raleway text-black text-xl">
                         Better luck next time
                     </p>
-                    <p className="text-center font-semibold text-base">
+                    <p className="text-center font-light font-raleway text-black">
                         {gameWinner?.name} has won the game!
                     </p>
                 </div>
                 <div className="flex flex-col space-y-1">
-                    <p className="text-center text-base  font-light">
+                    <p className="text-center font-light font-raleway text-black">
                         The correct word for the last is:
                     </p>
-                    <p className="text-center text-lg font-bold">
+                    <p className="text-center text-lg font-bold font-raleway text-green-500">
                         {correctWord?.toUpperCase()}
                     </p>
                 </div>
@@ -422,6 +422,9 @@ export default function Game() {
                     console.log(err);
                 }
             }
+            else {
+                return
+            }
         }
         if (letter === "BACK") {
             if (insertIndex <= 0) {
@@ -490,69 +493,59 @@ export default function Game() {
 
             {gameInfo.game ? (
                 gameInfo?.gameCompleted ? (
-                    <div className="flex flex-col space-y-2 justify-center items-center">
+                    <div className="flex flex-col space-y-2 justify-center items-center relative">
                         <div className="flex flex-col p-4 justify-center items-center space-y-0">
                             <img src="/check.gif" className="w-20 h-20" />
-                            <p className="text-base font-bold text-center text-lg">
+                            <p className="font-raleway font-bold text-center text-lg text-gray-700 ">
                                 GAME COMPLETED
                             </p>
                         </div>
                         {gameInfo?.gameWinner ? (
                             <div className="flex flex-col p-4 py-2 justify-center items-center space-y-2">
-                                <p className="text-lg font-bold">Winner</p>
+                                <p className="text-xl font-light font-raleway text-gray-700">Winner</p>
                                 <div className="flex flex-col justify-center items-center space-y-2">
                                     <Avatar
                                         user={gameInfo?.gameWinner}
                                         large={true}
                                     />
-                                    <p className="text-base font-bold">
+                                    <p className="text-base font-raleway font-light text-black">
                                         {gameInfo?.gameWinner?.name}
                                     </p>
                                 </div>
                             </div>
                         ) : (
                             <div className="flex flex-col p-4 py-2 justify-center items-center space-y-2">
-                                <p className="text-lg font-bold">
+                                <p className="text-lg font-light font-raleway text-gray-700">
                                     {" "}
                                     The game has been drawn
                                 </p>
                             </div>
                         )}
                         {gameInfo?.score ? (
-                            <div className="flex flex-col justify-center item-center p-4">
-                                <p className="text-lg font-bold text-center">
-                                    Score Board
+                            <div className="flex flex-col justify-center item-center p-4 space-y-2">
+                                <p className="text-lg font-light font-raleway text-gray-700">
+                                    Round scores
                                 </p>
-                                <table className="flex-col space-y-2">
-                                    <th className="flex space-x-4 justify-center items-center justify-between">
-                                        <td> USER </td>
-                                        <td> SCORE </td>
-                                    </th>
-                                    {gameInfo?.score?.map((row) => {
-                                        return (
-                                            <tr className="flex space-x-4 justify-center items-center">
-                                                <td className="flex space-x-2 items-center">
-                                                    <img
-                                                        src={row?.user?.picture}
-                                                        className="w-7 h-7 rounded-sm"
-                                                    />
-                                                    <p className="text-sm font-bold">
-                                                        {row?.user?.name}
-                                                    </p>
-                                                </td>
-                                                <td className="flex space-x-2">
-                                                    <p className="text-sm font-bold">
-                                                        {row?.score}
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                        );
+                                <div className="flex flex-col space-y-2">
+                                    {gameInfo.score?.map((row)=>{
+                                        return <div className="flex rounded-lg shadow-md bg-white p-4 justify-between items-center space-x-2">
+                                            <div className="flex space-x-3 items-center">
+                                                <img className="w-8 h-8 rounded-full" src={row?.user?.picture}/>
+                                                <div className="flex flex-col">
+                                                    <p className="font-raleway text-black">{row?.user?.name}</p>
+                                                    <p className="font-raleway text-xs text-black font-light">{row?.user?.email}</p>
+                                                </div>
+                                            </div>
+                                            <div className="flex justify-center items-center">
+                                                <p className="text-lg font-raleway text-gray-700">{row.score}</p>
+                                            </div>
+                                        </div>
                                     })}
-                                </table>
+                                </div>
                             </div>
                         ) : null}
                         <button
-                            className="p-4 bg-secondary rounded-lg font-bold hover:bg-correct"
+                            className="p-4 bg-indigo-100 border border-indigo-700 w-3/4 text-indigo-700 rounded-lg font-raleway hover:bg-correct fixed bottom-4"
                             onClick={handleReturnToMainMenu}
                         >
                             Exit To Main Menu
@@ -561,11 +554,11 @@ export default function Game() {
                 ) : (
                     <div className="flex flex-col space-y-4 relative">
                         <div className="flex justify-center items-center space-x-2">
-                            <span className="flex w-3 h-3 justify-center items-center">
+                            {/* <span className="flex w-3 h-3 justify-center items-center">
                                 <Pin />
-                            </span>
-                            <span className="text-base font-bold">
-                                Round {gameInfo?.currentRound}
+                            </span> */}
+                            <span className="text-xl font-raleway text-gray-700">
+                                ROUND {gameInfo?.currentRound}
                             </span>
                         </div>
                         {submissions.map((submission) => {
@@ -595,18 +588,18 @@ export default function Game() {
                             );
                         })}
                         {gameInfo?.roundCompleted ? (
-                            <div className="flex flex-col items-center justify-center space-y-2">
+                            <div className="flex flex-col items-center justify-center space-y-2 py-4">
                                 <div className="flex-col flex items-center justify-center">
-                                    <span className="w-6 h-6 text-green-500">
+                                    <span className="w-10 h-10 text-green-500">
                                         <Check />
                                     </span>
-                                    <p className="text-lg font-bold">
+                                    <p className="text-lg font-bold font-raleway text-gray-700">
                                         Round has been completed
                                     </p>
                                 </div>
                                 {gameInfo?.roundWinner ? (
                                     <div className="flex-col flex items-center justify-center space-y-3">
-                                        <p className="text-lg font-semibold text-center">
+                                        <p className="text-lg font-raleway font-light text-black text-center">
                                             Round has been won by:
                                         </p>
                                         <div className="flex flex-col justify-center items-center">
@@ -614,8 +607,9 @@ export default function Game() {
                                                 user={
                                                     gameInfo?.roundWinner?.user
                                                 }
+                                                large={true}
                                             />
-                                            <p className="text-base font-bold">
+                                            <p className="text-base font-light text-center text-black font-raleway">
                                                 {
                                                     gameInfo?.roundWinner?.user
                                                         ?.name
@@ -625,14 +619,14 @@ export default function Game() {
                                     </div>
                                 ) : (
                                     <div className="flex-col flex">
-                                        <p className="text-lg font-bold">
+                                        <p className="text-lg font-light text-center text-black font-raleway">
                                             The round has been drawn!
                                         </p>
                                     </div>
                                 )}
-                                <div className="flex justify-center items-center">
+                                <div className="flex justify-center items-center fixed bottom-4 w-full">
                                     <button
-                                        className="rounded-lg p-4 bg-correct font-bold text-sm"
+                                        className="rounded-lg p-2 bg-green-100 border border-green-600 font-bold font-raleway text-green-600 w-3/4"
                                         onClick={handleNextRoundCreation}
                                     >
                                         Next Round
@@ -640,14 +634,14 @@ export default function Game() {
                                 </div>
                             </div>
                         ) : gameInfo?.completedForUser ? (
-                            <div className="flex flex-col p-4 justify-center items-center space-y-4">
-                                <span className="w-6 h-6 text-green-500">
+                            <div className="flex flex-col p-4 justify-center items-center space-y-2">
+                                <span className="w-10 h-10 text-green-500">
                                     <Check />
                                 </span>
-                                <p className="text-base font-bold text-center">
+                                <p className="text-lg font-bold text-center text-gray-700 font-raleway">
                                     You have completed the round.
                                 </p>
-                                <p className="text-sm font-semibold text-center">
+                                <p className="text-sm font-light text-center text-gray-700 font-raleway">
                                     Please wait for other users to finish the
                                     round.
                                 </p>

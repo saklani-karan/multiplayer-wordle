@@ -70,30 +70,28 @@ const Auth = () => {
     return (
         <div className="flex flex-col justify-center items-center h-screen">
             <div className="flex-col flex space-y-4 items-center justify-center">
-                <WordleBlocks />
+                <p className="text-3xl font-bold font-display text-purple-700">Murdle</p>
                 <div className="flex-col space-y-1 justify-center item-center">
-                    <p className="text-center text-lg sm:text-3xl">
-                        Welcome to MultiWordle
+                    <p className="text-center text-lg font-light font-raleway text-gray-700">
+                        Welcome to Multi-Wordle
                     </p>
-                    <p className="text-center text-xs sm: text-lg">
+                    <p className="text-center text-base font-light font-raleway text-gray-700">
                         Play your favorite worlde game but now also with
-                        friends.
+                        friends. Sign up here and start your multi-wordle experience
                     </p>
                 </div>
                 {isAuthenticating ? (
                     <Loader />
                 ) : (
                     <button
-                        className={`bg-white p-2 flex justify-center items-center space-x-2 shadow-lg sm:space-x-4 ${
-                            isAuthenticating ? "bg-red-300" : "bg-red-500"
-                        } rounded-sm w-3/4`}
+                        className={`bg-white p-4 px-6 flex justify-center items-center space-x-4 shadow-lg sm:space-x-4 bg-red-100 rounded-full`}
                         onClick={handleAuthRedirect}
                         disabled={isAuthenticating}
                     >
-                        <span className="w-5 h-5 sm:w-7 sm:h-7">
+                        <span className="w-5 h-5 sm:w-7 sm:h-7 text-red-400">
                             <Google />
                         </span>
-                        <span className="text-sm text-white font-base sm:text-base">
+                        <span className="text-base font-bold font-raleway text-red-600">
                             Sign in with Google
                         </span>
                     </button>

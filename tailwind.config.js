@@ -21,12 +21,19 @@ module.exports = {
                 },
                 secondary: "#383838",
                 primary: "#413F42",
-                correct: "#538d4e",
-                close: "#b59f3b",
+                correct: "#B6E2A1",
+                close: "#FFEBB4",
+                banner: "#f7f5eb",
             },
             screens: {
                 // adding xs to the rest
                 xs: "300px",
+            },
+            fontFamily: {
+                display: ["Satisfy", "cursive"],
+                roboto: ["Roboto", "Arial"],
+                montserrat: ['Montserrat', "sans-serif"],
+                raleway: ['Raleway', "sans-serif"]
             },
         },
     },

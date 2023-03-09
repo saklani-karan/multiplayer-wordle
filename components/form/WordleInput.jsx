@@ -7,7 +7,7 @@ export const WorldeInput = ({ values, submission }) => {
             {(values || ["", "", "", "", ""]).map((value, idx) => {
                 return (
                     <div
-                        className={`flex h-10 w-10 justify-center items-center border border-white font-bold ${
+                        className={`flex h-10 w-10 justify-center items-center border border-black font-bold text-indigo-700 ${
                             submission?.[idx] === "CORRECT"
                                 ? "bg-correct"
                                 : submission?.[idx] === "PRESENT"

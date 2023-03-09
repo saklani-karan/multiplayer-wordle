@@ -31,7 +31,7 @@ export const Keyboard = ({ handleKeyPress }) => {
             <div
                 className={`flex justify-center items-center ${
                     color == 0
-                        ? "bg-secondary"
+                        ? "bg-white border text-gray-700"
                         : color == -1
                         ? "bg-gray-700 text-gray-600"
                         : color == 1

@@ -8,6 +8,8 @@ import { useRouter } from "next/router";
 import { client } from "../utils";
 import { Modal } from "../components/modals/Modal";
 import { Avatar } from "../components/display/Avatar";
+import { Gamepad } from "../icons/Gamepad";
+import { Dice } from "../icons/Dice";
 
 export default function Home() {
     const authContext = useUserAuthContext();
@@ -173,8 +175,8 @@ export default function Home() {
                     </Modal>
                 ) : null}
             </div>
-            <div className="flex flex-col px-2 space-y-4 lg:hidden">
-                <div className="flex flex-col justify-between border rounded-md overflow-hidden">
+            <div className="flex flex-col px-2 space-y-4 py-2 lg:hidden relative">
+                {/* <div className="flex flex-col justify-between border rounded-md overflow-hidden">
                     <div className="flex text-sm font-bold bg-white py-1 px-2 text-secondary">
                         Play
                     </div>
@@ -200,12 +202,118 @@ export default function Home() {
                             <span className="font-semibold">Join Room</span>
                         </div>
                     </div>
+                </div> */}
+                <div className="flex space-x-6 p-4 overflow-x-auto no-scrollbar">
+                    <div className="flex flex-col  border-4 border-white rounded-3xl justify-center items-center overflow-hidden shadow-lg  min-w-fit" onClick={handleCreateRoom}>
+                        <div className="bg-red-300 bg-opacity-80 flex justify-center items-center p-5 w-32 h-36">
+                            <span className="w-20 h-24 flex items-center">
+                                <img src="/play.gif" />
+                            </span>
+                        </div>
+                        <div className="bg-white flex justify-center items-center p-2 w-full">
+                            <p className="text-primary text-sm font-semibold text-red-500">Start Room</p>
+                        </div>
+                    </div>
+                    <div className="flex flex-col  border-4 border-white rounded-3xl justify-center items-center overflow-hidden shadow-lg min-w-fit" onClick={()=>{setIsRoomInput(true)}}>
+                        <div className="bg-blue-200 bg-opacity-80 flex justify-center items-center p-5 w-32 h-36">
+                        <span className="w-14 h-14 text-blue-500 text-opacity-70">
+                                <Join />
+                            </span>
+                        </div>
+                        <div className="bg-white flex justify-center items-center p-2 w-full">
+                            <p className="text-primary text-sm font-semibold text-blue-500">Join Room</p>
+                        </div>
+                    </div>
+                    <div className="flex flex-col  border-4 border-white rounded-3xl justify-center items-center overflow-hidden shadow-lg min-w-fit">
+                        <div className="bg-indigo-200 bg-opacity-80 flex justify-center items-center p-5 w-32 h-36">
+                        <span className="w-14 h-14 text-indigo-500 text-opacity-70">
+                                <Leaderboard />
+                            </span>
+                        </div>
+                        <div className="bg-white flex justify-center items-center p-2 w-full">
+                            <p className="text-primary text-sm font-semibold text-indigo-500">Leaderboard</p>
+                        </div>
+                    </div>
                 </div>
-                <div className="flex flex-col justify-between border rounded-md overflow-hidden">
+                <div className="flex pt-4 xs:pt-6 p-4 w-full">
+                    <div className="flex relative bg-banner rounded-2xl shadow-xl p-2 sm:p-4 px-6 items-center justify-start font-display w-full">
+                        <div className="flex flex-col space-y-2 py-4 w-3/5 xs:w-full">
+                            <p className="text-yellow-700">
+                                Now play wordle with friends
+                            </p>
+                            <button className="rounded-lg shadow-lg bg-yellow-700 border-0 p-2 text-center text-sm w-full xs:w-1/2 font-light">
+                                Create Room
+                            </button>
+                        </div>
+                        
+                        <img src="basketball.png" className="w-20 xs:w-20 bottom-0 right-3 absolute"/>
+                    </div>
+                </div>
+                <div className="flex flex-col p-4 py-2 space-y-4">
+                    <div className="flex space-x-4 items-center bg-indigo-100 p-2 rounded-xl shadow-lg">
+                        <div className="flex justify-center items-center w-1/4">   
+                            <div className="p-4 flex justify-center items-center bg-indigo-200 rounded-full w-16 h-16">
+                                <span className="w-8 text-indigo-600 text-opacity-70 rounded-full">
+                                    <Gamepad />
+                                </span>
+                            </div>
+                        </div>
+                       
+                        <div className="flex justify-between items-center w-3/4">
+                            <div className="flex flex-col space-y-0 text-indigo-900 justify-start">
+                                <p className="text-base font-semibold">Active Games</p>
+                                <p className="text-sm font-base">0 games</p>
+                            </div>
+                            <button className="rounded-lg shadow-xl bg-indigo-500 p-2 text-sm font-semibold text-white">
+                                View Games
+                            </button>
+                        </div>
+                    </div>
+                    <div className="flex space-x-4 items-center bg-blue-100 p-2 rounded-xl shadow-lg">
+                        <div className="flex justify-center items-center w-1/4">   
+                            <div className="p-4 flex justify-center items-center bg-blue-200 rounded-full w-16 h-16">
+                                <span className="w-8 text-blue-600 text-opacity-70 rounded-full">
+                                    <Dice />
+                                </span>
+                            </div>
+                        </div>
+                       
+                        <div className="flex justify-between items-center w-3/4">
+                            <div className="flex flex-col space-y-0 text-blue-900 justify-start">
+                                <p className="text-base font-semibold">Active Rooms</p>
+                                <p className="text-sm font-base">0 rooms</p>
+                            </div>
+                            <button className="rounded-lg shadow-xl bg-blue-500 p-2 text-sm font-semibold text-gray-100">
+                                View Rooms
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex flex-col p-4 py-2">
+                <div className="flex justify-between items-center font-display font-semibold bg-banner p-2 px-4 rounded-lg shadow-lg">
+                        <p className="text-yellow-700 font-semibold">
+                            Invite friends for a game of multiplayer wordle
+                        </p>
+                        <button className="text-while bg-yellow-700 p-2 px-4 rounded-lg">
+                            Invite
+                        </button>
+                    </div>
+                </div>
+                {isRoomInput ? (
+                    <Modal
+                        title={"Join Room"}
+                        onClose={() => {
+                            setIsRoomInput(false);
+                        }}
+                    >
+                        <EnterRoom />
+                    </Modal>
+                ) : null}
+                {/* <div className="flex flex-col justify-between border rounded-md overflow-hidden">
                     <div className="flex text-sm font-bold bg-white py-1 px-2 text-secondary">
                         Active Rooms
                     </div>
-                    {/* <div className="flex w-full justify-between space-x-3">
+                    <div className="flex w-full justify-between space-x-3">
                         <div
                             className="flex  flex-col items-center justify-center w-3/4 sm:w-1/2 md:1/3 lg:w-1/4 p-3 bg-secondary rounded-lg shadow-lg space-x-2 hover:shadow-2xl cursor-pointer"
                             onClick={handleCreateRoom}
@@ -226,7 +334,7 @@ export default function Home() {
                             </span>
                             <span className="font-semibold">Join Room</span>
                         </div>
-                    </div> */}
+                    </div>
                     <div className="flex flex-col py-6">
                         <p className="text-center text-white">
                             You have no active rooms
@@ -245,7 +353,7 @@ export default function Home() {
                         </div>
                     ) : null}
                     {userIncGames?.length ? <div></div> : null}
-                </div>
+                </div> */}
             </div>
         </MainLayout>
     );

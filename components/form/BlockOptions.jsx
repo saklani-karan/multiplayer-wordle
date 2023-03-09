@@ -17,14 +17,14 @@ export const BlockOptions = ({
     };
 
     return (
-        <div className="flex space-x-2 justify-center items-center">
+        <div className="flex space-x-4 items-center">
             {options?.map(({ key, value }) => {
                 return (
                     <div
-                        className={`flex justify-center items-center p-4 px-6 rounded-lg cursor-pointer ${
+                        className={`flex rounded-lg p-2 bg-white px-6 justify-center ${
                             key === selected
-                                ? "bg-correct font-semibold"
-                                : "bg-secondary"
+                                ? "border-2 text-blue-600 bg-blue-50 border-blue-600"
+                                : "border border-gray-400 text-black"
                         }`}
                         onClick={() => {
                             handleSelect({ key, value });
